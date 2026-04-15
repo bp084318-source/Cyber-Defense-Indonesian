@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cyber Defense System</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+<h1>CYBER DEFENSE SYSTEM</h1>
+
+<div class="card">
+  <h2>🖼️ Image Detection</h2>
+
+  <form id="searchForm"
+    action="https://www.google.com/searchbyimage/upload"
+    method="POST"
+    enctype="multipart/form-data"
+    target="_blank">
+
+    <input type="file" name="encoded_image" id="imageUpload" accept="image/*">
+
+    <img id="preview" style="display:none; max-width:100%; margin-top:10px;">
+
+    <button type="button" onclick="startScan()">SCAN IMAGE</button>
+    <button type="submit" id="realSubmit" style="display:none;"></button>
+
+  </form>
+
+  <div id="scanStatus"></div>
+
+  <div class="progress-bar">
+    <div id="progress"></div>
+  </div>
+
+  <div id="resultBox" style="display:none;">
+    <h3>📊 Hasil Analisis</h3>
+    <p id="resultText"></p>
+    <button onclick="openResult()">LIHAT HASIL DETAIL</button>
+  </div>
+
+  <p class="privacy">
+    🔒 Foto tidak disimpan. Data dihapus otomatis setelah proses.
+  </p>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
