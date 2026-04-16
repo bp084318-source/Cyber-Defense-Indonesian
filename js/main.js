@@ -20,6 +20,18 @@ function buy(game, item) {
   if (form) {
     form.scrollIntoView({ behavior: "smooth" });
   }
+  // NOTIFIKASI
+  const notif = document.getElementById("notif");
+  if (notif) {
+  notif.classList.add("show");
+
+  setTimeout(() => {
+    notif.classList.remove("show");
+  }, 2000);
+  }
+  if (navigator.vibrate) {
+  navigator.vibrate(50);
+  }
 }
 
 // tombol order WA
@@ -87,3 +99,19 @@ function optimizeMobileUI() {
 
 // jalanin saat load
 window.onload = optimizeMobileUI;
+
+// FUNCTION PLAY SOUND
+function playClick() {
+  const sound = document.getElementById("clickSound");
+  if (sound) {
+    sound.currentTime = 0;
+    sound.play();
+  }
+}
+
+// AUTO TAMBAH KE SEMUA BUTTON
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", playClick);
+  });
+});
