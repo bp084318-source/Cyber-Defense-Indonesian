@@ -13,27 +13,37 @@ function buy(game, item) {
   selectedGame = game;
   selectedItem = item;
 
-  const el = document.getElementById("selectedItem");
-  if (el) {
-    el.innerText = `Selected: ${game} - ${item}`;
+  document.getElementById("selectedItem").innerText = "Dipilih: " + item;
+
+  // AUTO SCROLL KE FORM
+  const form = document.getElementById("orderForm");
+  if (form) {
+    form.scrollIntoView({ behavior: "smooth" });
   }
 }
 
 // tombol order WA
 function order() {
   const userId = document.getElementById("userId").value;
-  const qtyEl = document.getElementById("qty"); // optional
+  const serverInput = document.getElementById("serverId");
 
-  const qty = qtyEl ? qtyEl.value : "1";
+  const gameType = document.body.dataset.game; // ambil dari body
+  const isML = gameType === "ml";
 
-  if (!selectedGame || !selectedItem) {
-    alert("Pilih item dulu!");
+  if (!userId) {
+    alert("Masukkan ID!");
     return;
   }
 
-  if (!userId) {
-    alert("Masukkan ID game!");
-    return;
+  let server = "";
+
+  if (isML) {
+    server = serverInput ? serverInput.value : "";
+
+    if (!server) {
+      alert("Masukkan Server ID!");
+      return;
+    }
   }
 
   const adminNumber = "6283183419690";
@@ -43,13 +53,11 @@ function order() {
 
 Game: ${selectedGame}
 Item: ${selectedItem}
-ID Game: ${userId}
-Jumlah: ${qty || "1"}
+ID: ${userId}${server ? ` (${server})` : ""}
 
 Mohon segera diproses.`;
 
   const url = `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
-
   window.open(url, "_blank");
 }
 
