@@ -54,6 +54,10 @@ function order() {
   const gameType = document.body.dataset.game; // ambil dari body
   const isML = gameType === "ml";
 
+  if (!/^[0-9]+$/.test(userId)) {
+    alert("ID harus berupa angka!");
+    return;
+  }
   if (!userId) {
     alert("Masukkan ID!");
     return;
