@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="styles/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body data-game="ml">
 
 <h1>⚔️ MOBILE LEGENDS TOPUP</h1>
 
@@ -86,9 +86,9 @@
 
 </div>
 
-<div class="card">
+<div class="card" id="orderForm">
   <input type="text" id="userId" placeholder="Masukkan ID ML">
-  <input type="number" id="qty" placeholder="Jumlah topup (opsional)">
+  <input type="text" id="serverId" placeholder="Masukkan Server Id (contoh: 1234)">
   <p id="selectedItem"></p>
   <button onclick="order()">ORDER VIA WHATSAPP</button>
 </div>
