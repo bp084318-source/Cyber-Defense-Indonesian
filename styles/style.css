@@ -175,3 +175,24 @@ h1, h2, h3 {
 * {
   box-sizing: border-box;
 }
+/* NOTIFICATION */
+#notif {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: #00ff99;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 999;
+}
+
+/* MUNCUL */
+#notif.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
